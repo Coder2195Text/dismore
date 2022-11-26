@@ -9,7 +9,7 @@ const Home: FC = () => {
         <meta name="description" content="Disboard clone" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="row text-center pt-3">
+      <div className="row text-center pt-3  mx-1">
         <h2>Think of a place...</h2>
         <p>...Where your servers and emojis come to life.</p>
         <p>Thats what Dismore is. A place for bringing your dreams to life.</p>
