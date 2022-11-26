@@ -1,9 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
-import Image from "next/image";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FC } from "react";
 
-export default function Home() {
+const Home: FC = () => {
   return (
     <div>
       <Head>
@@ -16,10 +14,12 @@ export default function Home() {
         <p>...Where your servers and emojis come to life.</p>
         <p>Thats what Dismore is. A place for bringing your dreams to life.</p>
         <p>
-          Note: This is a junior developer's WOP, don't use this an offical
+          Note: This is a junior developer's WIP, don't use this an offical
           disboard/emoji.gg replacement.
         </p>
       </div>
     </div>
   );
-}
+};
+
+export default Home;
