@@ -1,0 +1,44 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+    provider             = "mysql"
+    url                  = env("DATABASE_URL")
+    referentialIntegrity = "prisma"
+}
+
+model User {
+    id      String   @id @db.VarChar(20)
+    servers Server[]
+    reviews Review[]
+}
+
+model Server {
+    id          String      @id @db.VarChar(22)
+    title       String      @db.VarChar(100)
+    description String      @db.VarChar(3000)
+    lastBumped  DateTime?
+    public      Boolean     @default(true)
+    tags        ServerTag[]
+    admins      User[]
+    inviteCode  String      @db.VarChar(10)
+    reviews     Review[]
+}
+
+model Review {
+    rating     Int
+    title      String @db.VarChar(200)
+    desciption String @db.VarChar(3000)
+    id         String @id @default(cuid())
+    reviewee   User   @relation(fields: [revieweeID], references: [id])
+    revieweeID String @db.VarChar(20)
+    server     Server @relation(fields: [serverID], references: [id])
+    serverID   String @db.VarChar(22)
+}
+
+model ServerTag {
+    tag     String   @id @db.VarChar(50)
+    servers Server[]
+}
